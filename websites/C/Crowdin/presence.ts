@@ -137,7 +137,7 @@ presence.on("UpdateData", () => {
       presenceData.details = "Website Home";
     else if (
       document.location.pathname.includes("/project/") ||
-      (document.location.host !== "crowdin.com" &&
+      (!document.location.host.includes("crowdin.com") &&
         document.location.pathname === "/")
     ) {
       translateProject =
@@ -206,6 +206,8 @@ presence.on("UpdateData", () => {
           profileNickname ? ` - ${profileNickname.innerText}` : ""
         }`;
       }
+    } else if (document.location.pathname.includes("/notifications")) {
+      presenceData.details = "Viewing their notifications";
     } else if (document.location.pathname.includes("/projects")) {
       const currentTab =
         document.querySelector("#showcase_current").parentElement.parentElement
