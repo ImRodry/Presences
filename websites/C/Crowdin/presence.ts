@@ -132,7 +132,7 @@ presence.on("UpdateData", () => {
   } else {
     if (
       (document.location.pathname === "/" || !document.location.pathname) &&
-      document.location.host === "crowdin.com"
+      document.location.host.includes("crowdin.com")
     )
       presenceData.details = "Website Home";
     else if (
@@ -206,9 +206,21 @@ presence.on("UpdateData", () => {
           profileNickname ? ` - ${profileNickname.innerText}` : ""
         }`;
       }
-    } else if (document.location.pathname.includes("/notifications")) {
+    } else if (document.location.pathname.includes("/settings")) {
+      const currentTab =
+        document.querySelector(".active").className === "active"
+          ? document.querySelector(".active").textContent
+          : document
+              .querySelector(".active")
+              .getElementsByClassName("dropdown-menu")[0]
+              .querySelector(".active").textContent;
+      presenceData.details = "Viewing their settings";
+      presenceData.state = currentTab;
+    } else if (document.location.pathname.includes("/notifications")) 
       presenceData.details = "Viewing their notifications";
-    } else if (document.location.pathname.includes("/projects")) {
+     else if (document.location.pathname.includes("/messages")) 
+      presenceData.details = "Viewing their conversations";
+     else if (document.location.pathname.includes("/projects")) {
       const currentTab =
         document.querySelector("#showcase_current").parentElement.parentElement
           .className === "tab-pane active"

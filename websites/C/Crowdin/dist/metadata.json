@@ -23,6 +23,7 @@
     "status.crowdin.com",
     "blog.crowdin.com"
   ],
+  "regExp": "([a-z]{1,2}[.])?crowdin[.]com",
   "version": "3.0.1",
   "logo": "https://i.imgur.com/rtkC4kS.png",
   "thumbnail": "https://i.imgur.com/dJnnzqd.png",
